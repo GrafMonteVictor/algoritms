@@ -17,7 +17,7 @@ import java.util.Map;
 public class ATM {
 
 
-    private final Map<Integer, Integer> atmState;
+    private final Map<Integer, Integer> atsmState;
     private final List<Integer> banknotes;
 
     public ATM(Map<Integer, Integer> atmState) {
@@ -27,6 +27,9 @@ public class ATM {
     }
 
     public Map<Integer, Integer> getMoney(int money) {
+        if (money <= 0 ) { //if not correct amount of money
+            throw new IllegalStateException("ATM didn`t send money");
+        }
         Map <Integer, Integer> wallet = new HashMap<>();
         for (Integer banknote : banknotes) {
             int countBanknotes = Math.min(atmState.get(banknote), money / banknote);
@@ -39,9 +42,8 @@ public class ATM {
                 break;
             }
         }
-        if (money > 0) {
-            wallet.clear();
-            return wallet;
+        if (money > 0) { //if not enough money in ATM
+            throw new IllegalStateException("ATM didn`t send money");
         }
         for (var entry: wallet.entrySet()) {
             atmState.put(entry.getKey(), atmState.get(entry.getKey()) - entry.getValue());
