@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Банкомат.
@@ -17,26 +14,42 @@ import java.util.Map;
 public class ATM {
 
 
-    private final Map<Integer, Integer> atsmState;
-    private final List<Integer> banknotes;
+    private final Map<String, Map<Integer, Integer>> atmState;
+//    private final List<Integer> banknotes;
 
-    public ATM(Map<Integer, Integer> atmState) {
+    public ATM(Map<String, Map<Integer, Integer>> atmState) {
         this.atmState = new HashMap<>(atmState);
-        this.banknotes = atmState.keySet().stream()
-                .sorted(Comparator.reverseOrder()).toList();
+//        this.banknotes = atmState.keySet().stream()
+//                .sorted(Comparator.reverseOrder()).toList();
+        //отсортировать купюры сразу или потом? - потом
     }
 
-    public Map<Integer, Integer> getMoney(int money) {
-        if (money <= 0 ) { //if not correct amount of money
+    public Map<Integer, Integer> getMoney(String currency, int money) {
+        if (money <= 0) { //if not correct amount of money
             throw new IllegalStateException("ATM didn`t send money");
         }
-        Map <Integer, Integer> wallet = new HashMap<>();
+        if (!atmState.containsKey(currency)) {
+            throw new IllegalStateException("ATM didn`t send money");
+        }
+        //выделяем валюту
+        Map<Integer, Integer> wallet = new HashMap<>();
+        List<Integer> banknotes = new ArrayList<>();
+        Map<Integer, Integer> subStateAtm = new HashMap<>();
+        for (var entry : atmState.entrySet()) {
+            if (entry.getKey().equals(currency)) {
+                banknotes = entry.getValue().keySet().stream().sorted(Comparator.reverseOrder()).toList(); //getListBanknotes
+                subStateAtm = new HashMap<>(entry.getValue());
+                break;
+            }
+        }
+        //обновляем состояние кошеля, подсостояние банкомата
         for (Integer banknote : banknotes) {
-            int countBanknotes = Math.min(atmState.get(banknote), money / banknote);
+            int countBanknotes = Math.min(subStateAtm.get(banknote), money / banknote);
             if (countBanknotes == 0) {
                 continue;
             }
             wallet.put(banknote, countBanknotes);
+            subStateAtm.put(banknote, subStateAtm.get(banknote) - countBanknotes);
             money -= countBanknotes * banknote;
             if (money == 0) {
                 break;
@@ -45,15 +58,11 @@ public class ATM {
         if (money > 0) { //if not enough money in ATM
             throw new IllegalStateException("ATM didn`t send money");
         }
-        for (var entry: wallet.entrySet()) {
-            atmState.put(entry.getKey(), atmState.get(entry.getKey()) - entry.getValue());
+        //обновляем состояние банкомата
+        for (var entry : wallet.entrySet()) {
+//            atmState.put(entry.getKey(), atmState.get(entry.getKey()) - entry.getValue());
+            atmState.put(currency, subStateAtm); //вычесть из мапы state мапу wallet
         }
         return wallet;
     }
-
-
-
-
-
-
 }
