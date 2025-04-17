@@ -67,7 +67,7 @@ public class TestATM {
                 100, 2,
                 50, 1,
                 10, 1,
-                5, 1));
+                5, 1)); //
 
         result = atm.getMoney("$", 105);
         Assertions.assertEquals(result, Map.of(
@@ -77,25 +77,11 @@ public class TestATM {
 
     @Test
     void getMoneyWhenNotEnoughMoney() {
-//        ATM atm = new ATM(Map.of(
-//                50, 2,
-//                100, 3,
-//                500, 4,
-//                1000, 2,
-//                5000, 1
-//        ));
-//        Assertions.assertThrows(IllegalStateException.class, () -> atm.getMoney(700000));
+        Assertions.assertThrows(IllegalStateException.class, () -> atm.getMoney("$", 700000));
     }
 
     @Test
     void getMoneyWhenNotNominal() {
-//        ATM atm = new ATM(Map.of(
-//                50, 2,
-//                100, 3,
-//                500, 4,
-//                1000, 2,
-//                5000, 1
-//        ));
-//        Assertions.assertThrows(IllegalStateException.class, () -> atm.getMoney(101));
+        Assertions.assertThrows(IllegalStateException.class, () -> atm.getMoney("Рубль", 101));
     }
 }
