@@ -1,6 +1,6 @@
 package org.example.mergedArray;
 
-public class Solution {
+public class MergedArray {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int index = m+n-1;  //last index
         while(n>0)
