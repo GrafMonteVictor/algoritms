@@ -1,4 +1,5 @@
-import org.example.ATM;
+package org.example.atm;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
