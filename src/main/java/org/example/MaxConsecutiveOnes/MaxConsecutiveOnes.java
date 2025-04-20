@@ -11,9 +11,7 @@ public class MaxConsecutiveOnes {
             if (nums[i] == 1) {
                 counterTemp++;
             } else {
-                if (counterMax < counterTemp) {
-                    counterMax = counterTemp;
-                }
+                counterMax = Math.max(counterMax, counterTemp);
                 counterTemp = 0;
             }
         }
