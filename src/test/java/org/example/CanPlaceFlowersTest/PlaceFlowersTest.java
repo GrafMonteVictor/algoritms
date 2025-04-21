@@ -14,8 +14,15 @@ public class PlaceFlowersTest {
     }
 
     @Test
-    void canPlaceFlowersTestLeftOnesTrue() {
-        int[] plantBed = {0,0,0,1};
+    void canPlaceFlowersTestLeftRightOnesTrue2() {
+        int[] plantBed = {1,0,0,0,0,1};
+        boolean is = placeFlowers.canPlaceFlowers(plantBed, 2);
+        Assertions.assertEquals(false, is);
+    }
+
+    @Test
+    void canPlaceFlowersTestRightOnesTrue() {
+        int[] plantBed = {0,0,1};
         boolean is = placeFlowers.canPlaceFlowers(plantBed, 1);
         Assertions.assertEquals(true, is);
     }
@@ -68,4 +75,6 @@ public class PlaceFlowersTest {
         boolean is = placeFlowers.canPlaceFlowers(plantBed, 0);
         Assertions.assertEquals(true, is);
     }
+
+
 }
