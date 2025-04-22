@@ -1,6 +1,6 @@
 package org.example.CanPlaceFlowersTest;
 
-import org.example.CanPlaceFlowers.PlaceFlowers;
+import org.example.placeFlowers.PlaceFlowers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

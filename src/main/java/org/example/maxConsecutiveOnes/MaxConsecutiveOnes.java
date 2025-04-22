@@ -1,4 +1,4 @@
-package org.example.MaxConsecutiveOnes;
+package org.example.maxConsecutiveOnes;
 
 public class MaxConsecutiveOnes {
     public int findMaxConsecutiveOnes(int[] nums) {

@@ -1,4 +1,4 @@
-package org.example.CanPlaceFlowers;
+package org.example.placeFlowers;
 
 public class PlaceFlowers {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {

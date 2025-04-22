@@ -1,6 +1,6 @@
 package org.example.MaxConsecutiveOnesTest;
 
-import org.example.MaxConsecutiveOnes.MaxConsecutiveOnes;
+import org.example.maxConsecutiveOnes.MaxConsecutiveOnes;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
