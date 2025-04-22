@@ -21,6 +21,13 @@ public class PlaceFlowersTest {
     }
 
     @Test
+    void canPlaceFlowersTestOneZero() {
+        int[] plantBed = {1,0};
+        boolean is = placeFlowers.canPlaceFlowers(plantBed, 1);
+        Assertions.assertEquals(false, is);
+    }
+
+    @Test
     void canPlaceFlowersTestRightOnesTrue() {
         int[] plantBed = {0,0,1};
         boolean is = placeFlowers.canPlaceFlowers(plantBed, 1);
