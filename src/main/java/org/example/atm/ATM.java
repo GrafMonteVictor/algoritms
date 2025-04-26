@@ -15,13 +15,9 @@ public class ATM {
 
 
     private final Map<String, Map<Integer, Integer>> atmState;
-//    private final List<Integer> banknotes;
 
     public ATM(Map<String, Map<Integer, Integer>> atmState) {
         this.atmState = new HashMap<>(atmState);
-//        this.banknotes = atmState.keySet().stream()
-//                .sorted(Comparator.reverseOrder()).toList();
-        //отсортировать купюры сразу или потом? - потом
     }
 
     public Map<Integer, Integer> getMoney(String currency, int money) {
@@ -60,7 +56,6 @@ public class ATM {
         }
         //обновляем состояние банкомата
         for (var entry : wallet.entrySet()) {
-//            atmState.put(entry.getKey(), atmState.get(entry.getKey()) - entry.getValue());
             atmState.put(currency, subStateAtm); //вычесть из мапы state мапу wallet
         }
         return wallet;
