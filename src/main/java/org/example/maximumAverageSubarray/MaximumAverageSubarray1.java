@@ -1,10 +1,11 @@
 package org.example.maximumAverageSubarray;
 
-public class MaximumAverageSubarray {
+public class MaximumAverageSubarray1 {
     public double findMaxAverage(int[] nums, int k) {
         //тест-кейсы
         //1-ый элемент > суммы
-        //Output Limit Exceeded
+        //Output Limit Exceeded - System.gc(); - очищает память, но дольше требуется времени
+        //nums[left++] - вначале вылоняется num[left], потом num[left++]
         double sumMax, sumTemp;
             sumMax = nums[0];
             sumTemp = nums[0];
@@ -30,7 +31,7 @@ public class MaximumAverageSubarray {
 //                System.out.println("врем. макс.: " + sumMax);
             }
         }
-        double averageValue = sumMax / k;
-        return averageValue;
+        System.gc();
+        return sumMax / k;
     }
 }

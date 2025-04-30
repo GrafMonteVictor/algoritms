@@ -3,14 +3,14 @@ package org.example.maximumAverageSubarray;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class MaximumAverageSubarrayTest {
-    MaximumAverageSubarray maximumAverageSubarray = new MaximumAverageSubarray();
+public class MaximumAverageSubarray1Test {
+    MaximumAverageSubarray1 maximumAverageSubarray1 = new MaximumAverageSubarray1();
 
     @Test
     void findMaxAverageTestSeveralNums1() {
         int[] num = new int[]{1, 12, -5, -6, 50, 3};
         int k = 4;
-        var result = maximumAverageSubarray.findMaxAverage(num, k);
+        var result = maximumAverageSubarray1.findMaxAverage(num, k);
         Assertions.assertEquals(12.75, result);
     }
 
@@ -18,7 +18,7 @@ public class MaximumAverageSubarrayTest {
     void findMaxAverageTestSeveralNums2() {
         int[] num = new int[]{1, 12, -5, -6, 50, 3};
         int k = 5;
-        var result = maximumAverageSubarray.findMaxAverage(num, k);
+        var result = maximumAverageSubarray1.findMaxAverage(num, k);
         Assertions.assertEquals(10.8, result);
     }
 
@@ -32,7 +32,7 @@ public class MaximumAverageSubarrayTest {
         }
         System.out.println(sum);
         int k = 93;
-        var result = maximumAverageSubarray.findMaxAverage(num, k);
+        var result = maximumAverageSubarray1.findMaxAverage(num, k);
         Assertions.assertEquals(-594.58065, result);
     }
 
@@ -40,7 +40,7 @@ public class MaximumAverageSubarrayTest {
     void findMaxAverageTestOneNum() {
         int[] num = new int[]{5};
         int k = 1;
-        var result = maximumAverageSubarray.findMaxAverage(num, k);
+        var result = maximumAverageSubarray1.findMaxAverage(num, k);
         Assertions.assertEquals(5, result);
     }
 
@@ -48,7 +48,7 @@ public class MaximumAverageSubarrayTest {
     void findMaxAverageTestSeveralNumsOneK() {
         int[] num = new int[]{1, 12, -5, -6, 50, 3};
         int k = 1;
-        var result = maximumAverageSubarray.findMaxAverage(num, k);
+        var result = maximumAverageSubarray1.findMaxAverage(num, k);
         Assertions.assertEquals(50, result);
     }
 
@@ -56,7 +56,7 @@ public class MaximumAverageSubarrayTest {
     void findMaxAverageTestKMoreArrayLength() {
         int[] num = new int[]{1, 12, -5, -6, 50, 2};
         int k = 10;
-        var result = maximumAverageSubarray.findMaxAverage(num, k);
+        var result = maximumAverageSubarray1.findMaxAverage(num, k);
         Assertions.assertEquals(9, result);
     }
 
@@ -64,7 +64,7 @@ public class MaximumAverageSubarrayTest {
     void findMaxAverageTestKEqualArrayLength() {
         int[] num = new int[]{1, 12, -5, -6, 50, 2};
         int k = 6;
-        var result = maximumAverageSubarray.findMaxAverage(num, k);
+        var result = maximumAverageSubarray1.findMaxAverage(num, k);
         Assertions.assertEquals(9, result);
     }
 
